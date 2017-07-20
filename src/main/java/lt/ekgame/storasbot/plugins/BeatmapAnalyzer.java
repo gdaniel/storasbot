@@ -38,9 +38,7 @@ import lt.ekgame.beatmap_analyzer.difficulty.OsuDifficultyCalculator;
 import lt.ekgame.beatmap_analyzer.difficulty.TaikoDifficulty;
 import lt.ekgame.beatmap_analyzer.difficulty.TaikoDifficultyCalculator;
 import lt.ekgame.beatmap_analyzer.performance.Performance;
-import lt.ekgame.beatmap_analyzer.performance.scores.ManiaScore;
-import lt.ekgame.beatmap_analyzer.performance.scores.OsuScore;
-import lt.ekgame.beatmap_analyzer.performance.scores.TaikoScore;
+import lt.ekgame.beatmap_analyzer.performance.scores.Score;
 import lt.ekgame.beatmap_analyzer.utils.Mod;
 import lt.ekgame.beatmap_analyzer.utils.Mods;
 
@@ -50,7 +48,7 @@ public class BeatmapAnalyzer {
 	private static final double ACC_STEP = 0.005;
 	
 	private Beatmap beatmap;
-	private DifficultyCalculator<?,?> calculator;
+	private DifficultyCalculator calculator;
 	
 	public BeatmapAnalyzer(Beatmap beatmap) {
 		this.beatmap = beatmap;
@@ -142,7 +140,7 @@ public class BeatmapAnalyzer {
 		double current = ACC_BEGIN;
 		while (current <= 1) {
 			if (current > 1) break;
-			Performance performance = difficulty.getPerformance(OsuScore.of(beatmap).accuracy(current).build());
+			Performance performance = difficulty.getPerformance(Score.of(beatmap).accuracy(current).build());
 			series.add(current, performance.getPerformance());
 			current += ACC_STEP;
 		}
@@ -154,7 +152,7 @@ public class BeatmapAnalyzer {
 		TaikoDifficulty difficulty = beatmap.getDifficulty(mods);
 		double current = ACC_BEGIN;
 		while (current <= 1) {
-			Performance performance = difficulty.getPerformance(TaikoScore.of(beatmap).accuracy(current).build());
+			Performance performance = difficulty.getPerformance(Score.of(beatmap).accuracy(current).build());
 			series.add(current, performance.getPerformance());
 			current += ACC_STEP;
 		}
@@ -171,7 +169,7 @@ public class BeatmapAnalyzer {
 		ManiaDifficulty difficulty = beatmap.getDifficulty(mods);
 		double current = ACC_BEGIN;
 		while (current <= 1) {
-			Performance performance = difficulty.getPerformance(ManiaScore.of(beatmap).accuracy(current).build());
+			Performance performance = difficulty.getPerformance(Score.of(beatmap).accuracy(current).build());
 			series.add(current, performance.getPerformance());
 			current += ACC_STEP;
 		}
@@ -186,7 +184,7 @@ public class BeatmapAnalyzer {
 
 	private TimePeriodValuesCollection getStrainData(int bucket) {
 		TimePeriodValuesCollection collection = new TimePeriodValuesCollection();
-		Difficulty<?, ?> difficulty = beatmap.getDifficulty();
+		Difficulty difficulty = beatmap.getDifficulty();
 		
 		if (difficulty instanceof OsuDifficulty) {
 			OsuDifficulty osuDiff = (OsuDifficulty) difficulty;
