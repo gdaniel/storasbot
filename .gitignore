@@ -2,3 +2,6 @@
 osu-api.txt
 discord-api.txt
 **/sample-config.conf
+.classpath
+.project
+.settings
