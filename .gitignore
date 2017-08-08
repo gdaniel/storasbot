@@ -5,3 +5,7 @@ discord-api.txt
 .classpath
 .project
 .settings
+build.properties
+plugin.properties
+plugin.xml
+database
