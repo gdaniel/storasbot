@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mikubot" nsURI="fr.zelus.mikubot" nsPrefix="fr.zelus.mikubot">
+  <eClassifiers xsi:type="ecore:EClass" name="Miku">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="countryTracker" eType="#//CountryTracker"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="playerTracker" eType="#//PlayerTracker"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="osuModel" eType="#//osu/OsuModel"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastDatabaseCheckTimestamp"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CountryTracker">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
+        eType="#//CountryTrackerEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CountryTrackerEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trackedCountry" eType="#//Country"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Country"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PlayerTracker"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PlayerTrackerEntry"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Player"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Play"/>
+  <eSubpackages name="osu" nsURI="fr.zelus.mikubot.osu" nsPrefix="fr.zelus.mikubot.osu">
+    <eClassifiers xsi:type="ecore:EClass" name="OsuModel">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="beatmapSets" upperBound="-1"
+          eType="#//osu/BeatmapSet" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="beatmaps" upperBound="-1"
+          eType="#//osu/Beatmap" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="artists" upperBound="-1"
+          eType="#//osu/Artist" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1"
+          eType="#//osu/Tag" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
+          eType="#//osu/Source" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="users" upperBound="-1"
+          eType="#//osu/OsuUser" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BeatmapSet">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="beatmapSetId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="beatmaps" eType="#//osu/Beatmap"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Beatmap">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="beatmapId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="difficultyRating" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="artist" eType="#//osu/Artist"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="approachRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="healthDrain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="overallDifficulty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="circleSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="#//osu/Mode"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//osu/Status"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="approvedDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastUpdate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="bpm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="hitLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1"
+          eType="#//osu/Tag"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxCombo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//osu/Source"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="genre" eType="#//osu/Genre"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="#//osu/Language"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="creator" eType="#//osu/OsuUser"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Artist">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Tag">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Source">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Mode">
+      <eLiterals name="OSU"/>
+      <eLiterals name="TAIKO" value="1"/>
+      <eLiterals name="CTB" value="2"/>
+      <eLiterals name="MANIA" value="3"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Status">
+      <eLiterals name="GRAVEYARD"/>
+      <eLiterals name="WIP" value="1"/>
+      <eLiterals name="PENDING" value="2"/>
+      <eLiterals name="RANKED" value="3"/>
+      <eLiterals name="APPROVED" value="4"/>
+      <eLiterals name="QUALIFIED" value="5"/>
+      <eLiterals name="LOVED" value="6"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Genre">
+      <eLiterals name="ANY"/>
+      <eLiterals name="UNSPECIFIED" value="1"/>
+      <eLiterals name="VIDEO_GAME" value="2"/>
+      <eLiterals name="ANIME" value="3"/>
+      <eLiterals name="ROCK" value="4"/>
+      <eLiterals name="POP" value="5"/>
+      <eLiterals name="OTHER" value="6"/>
+      <eLiterals name="NOVELTY" value="7"/>
+      <eLiterals name="HIP_HOP" value="9"/>
+      <eLiterals name="ELECTRONIC" value="10"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Language">
+      <eLiterals name="ANY"/>
+      <eLiterals name="OTHER" value="1"/>
+      <eLiterals name="ENGLISH" value="2"/>
+      <eLiterals name="JAPANESE" value="3"/>
+      <eLiterals name="CHINESE" value="4"/>
+      <eLiterals name="INSTRUMENTAL" value="5"/>
+      <eLiterals name="KOREAN" value="6"/>
+      <eLiterals name="FRENCH" value="7" literal=""/>
+      <eLiterals name="GERMAN" value="8"/>
+      <eLiterals name="SWEDISH" value="9"/>
+      <eLiterals name="SPANISH" value="10"/>
+      <eLiterals name="ITALIAN" value="11"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OsuUser">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="userId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/storasbot/src/main/java" modelPluginID="storasbot"
+    modelName="Miku" rootExtendsInterface="fr.inria.atlanmod.neoemf.core.PersistentEObject"
+    rootExtendsClass="fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject" reflectiveDelegation="true"
+    importerID="fr.inria.atlanmod.neoemf.eclipse.ui.migrator.NeoImporter" featureDelegation="Reflective"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>Miku.ecore</foreignModel>
+  <modelPluginVariables>NEOEMF=fr.inria.atlanmod.neoemf.core</modelPluginVariables>
+  <genPackages prefix="Mikubot" basePackage="fr.zelus" disposableProviderFactory="true"
+      ecorePackage="Miku.ecore#/">
+    <genClasses ecoreClass="Miku.ecore#//Miku">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Miku.ecore#//Miku/countryTracker"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Miku.ecore#//Miku/playerTracker"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Miku.ecore#//Miku/osuModel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//Miku/lastDatabaseCheckTimestamp"/>
+    </genClasses>
+    <genClasses ecoreClass="Miku.ecore#//CountryTracker">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Miku.ecore#//CountryTracker/entries"/>
+    </genClasses>
+    <genClasses ecoreClass="Miku.ecore#//CountryTrackerEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Miku.ecore#//CountryTrackerEntry/trackedCountry"/>
+    </genClasses>
+    <genClasses ecoreClass="Miku.ecore#//Country"/>
+    <genClasses ecoreClass="Miku.ecore#//PlayerTracker"/>
+    <genClasses ecoreClass="Miku.ecore#//PlayerTrackerEntry"/>
+    <genClasses ecoreClass="Miku.ecore#//Player"/>
+    <genClasses ecoreClass="Miku.ecore#//Play"/>
+    <nestedGenPackages prefix="Osu" basePackage="fr.zelus.mikubot" disposableProviderFactory="true"
+        ecorePackage="Miku.ecore#//osu">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Miku.ecore#//osu/Mode">
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Mode/OSU"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Mode/TAIKO"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Mode/CTB"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Mode/MANIA"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Miku.ecore#//osu/Status">
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Status/GRAVEYARD"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Status/WIP"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Status/PENDING"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Status/RANKED"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Status/APPROVED"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Status/QUALIFIED"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Status/LOVED"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Miku.ecore#//osu/Genre">
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/ANY"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/UNSPECIFIED"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/VIDEO_GAME"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/ANIME"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/ROCK"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/POP"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/OTHER"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/NOVELTY"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/HIP_HOP"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Genre/ELECTRONIC"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Miku.ecore#//osu/Language">
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/ANY"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/OTHER"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/ENGLISH"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/JAPANESE"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/CHINESE"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/INSTRUMENTAL"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/KOREAN"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/FRENCH"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/GERMAN"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/SWEDISH"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/SPANISH"/>
+        <genEnumLiterals ecoreEnumLiteral="Miku.ecore#//osu/Language/ITALIAN"/>
+      </genEnums>
+      <genClasses ecoreClass="Miku.ecore#//osu/OsuModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Miku.ecore#//osu/OsuModel/beatmapSets"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Miku.ecore#//osu/OsuModel/beatmaps"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Miku.ecore#//osu/OsuModel/artists"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Miku.ecore#//osu/OsuModel/tags"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Miku.ecore#//osu/OsuModel/sources"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Miku.ecore#//osu/OsuModel/users"/>
+      </genClasses>
+      <genClasses ecoreClass="Miku.ecore#//osu/BeatmapSet">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/BeatmapSet/beatmapSetId"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Miku.ecore#//osu/BeatmapSet/beatmaps"/>
+      </genClasses>
+      <genClasses ecoreClass="Miku.ecore#//osu/Beatmap">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/beatmapId"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/title"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/difficultyRating"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/version"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Miku.ecore#//osu/Beatmap/artist"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/approachRate"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/healthDrain"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/overallDifficulty"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/circleSize"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/mode"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/status"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/approvedDate"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/lastUpdate"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/bpm"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/hitLength"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/totalLength"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Miku.ecore#//osu/Beatmap/tags"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/maxCombo"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Miku.ecore#//osu/Beatmap/source"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/genre"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Beatmap/language"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference Miku.ecore#//osu/Beatmap/creator"/>
+      </genClasses>
+      <genClasses ecoreClass="Miku.ecore#//osu/Artist">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Artist/name"/>
+      </genClasses>
+      <genClasses ecoreClass="Miku.ecore#//osu/Tag">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Tag/name"/>
+      </genClasses>
+      <genClasses ecoreClass="Miku.ecore#//osu/Source">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/Source/name"/>
+      </genClasses>
+      <genClasses ecoreClass="Miku.ecore#//osu/OsuUser">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/OsuUser/userId"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Miku.ecore#//osu/OsuUser/username"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>
