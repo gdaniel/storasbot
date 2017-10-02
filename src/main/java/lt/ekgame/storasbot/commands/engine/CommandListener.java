@@ -9,10 +9,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import org.tillerino.osuApiModel.OsuApiBeatmap;
+import org.tillerino.osuApiModel.OsuApiScore;
+
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
 
 import lt.ekgame.storasbot.StorasDiscord;
+import lt.ekgame.storasbot.utils.osu.OsuMode;
+import lt.ekgame.storasbot.utils.osu.OsuUser;
 import net.dv8tion.jda.entities.Guild;
 import net.dv8tion.jda.entities.Message;
 import net.dv8tion.jda.entities.PrivateChannel;
@@ -36,6 +41,7 @@ public class CommandListener extends ListenerAdapter {
 			ClassPath classPath = ClassPath.from(CommandListener.class.getClassLoader());
 			Set<ClassInfo> classes = classPath.getTopLevelClassesRecursive("lt.ekgame.storasbot.commands");
 			for (ClassInfo info : classes) {
+				LOG.info("Registering Command " + info.getName());
 				try {
 					CommandReference reference = info.load().getAnnotation(CommandReference.class);
 					if (reference != null) {
@@ -68,6 +74,47 @@ public class CommandListener extends ListenerAdapter {
 		Optional<CommandDefinition> oCommand = getCommandByName(label);
 		BotCommandContext theContext = failedCommand == null 
 				? new BotCommandContext(message, guild, label) : failedCommand.context;
+		
+		// Test
+//		theContext.replyError("Raw Command: " + rawCommand);
+//		theContext.replyError("Label: " + label);
+//		for(Guild theGuild : StorasDiscord.getJDA().getGuilds()) {
+//			theContext.reply(theGuild.getName());
+//		}
+		
+//		LOG.info("it string: " + iterator.getString());
+		if(label.equals("top-plays")) {
+			Optional<String> userName = iterator.getString();
+			if(userName.isPresent()) {
+				try {
+					OsuUser user = StorasDiscord.getOsuApi().getUserByUsername(userName.get(), OsuMode.OSU);
+					if(user == null) {
+						theContext.replyError("Cannot find " + userName.get());
+					}
+					else {
+						LOG.info("Found user " + user.getUserName());
+						List<OsuApiScore> top = StorasDiscord.getOsuApi().getUserTop(Integer.toString(user.getUserId()), OsuMode.OSU, 10);
+						int count = 0;
+						StringBuffer buffer = new StringBuffer();
+						for(OsuApiScore topScore : top) {
+							count++;
+							OsuApiBeatmap beatmap = StorasDiscord.getOsuApi().getBeatmap(topScore.getBeatmapId());
+							buffer.append("#" + count + ": " + beatmap.getTitle() + "[" + beatmap.getVersion() + "] " + "(" + String.format("%.2f", beatmap.getStarDifficulty()) + "\\*) " + String.format("%.2f", topScore.getAccuracy()*100) + "%\n");
+						}
+						theContext.reply(buffer.toString());
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			else {
+				theContext.replyError("Please provide an user to display the top of ;w;\n"
+						+ "\t $top-plays <user name>");
+			}
+		}
+		
+		// /Test
 		
 		if (oCommand.isPresent()) {
 			CommandDefinition definition = oCommand.get();
